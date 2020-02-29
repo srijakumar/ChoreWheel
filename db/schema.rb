@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_29_214016) do
+ActiveRecord::Schema.define(version: 2020_02_29_214817) do
 
   create_table "chores", force: :cascade do |t|
     t.string "title"
@@ -19,4 +19,13 @@ ActiveRecord::Schema.define(version: 2020_02_29_214016) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "tasks", force: :cascade do |t|
+    t.string "content"
+    t.integer "chore_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["chore_id"], name: "index_tasks_on_chore_id"
+  end
+
+  add_foreign_key "tasks", "chores"
 end
