@@ -4,7 +4,7 @@
           <%= link_to "Mark as Complete", complete_chore_task_path(@chore, task.id), method: :patch %>
           <%# add strikethough or a color change for completed tasks %>
         </div>
-        <div class="task">
+        <div class="todo_item">
           <p style = "opacity: 0.4;"><strike><%= task.content %></strike></p>
         </div>
         <div class="trash">
