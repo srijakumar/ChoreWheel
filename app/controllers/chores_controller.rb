@@ -56,7 +56,7 @@ class ChoresController < ApplicationController
   def destroy
     @chore.destroy
     respond_to do |format|
-      format.html { redirect_to chores_url, notice: 'Chore was successfully destroyed.' }
+      format.html { redirect_to root_url, notice: 'Chore was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -1,6 +1,9 @@
-<h1>Editing Chore</h1>
+<h1 class ="todo_list_title">Edit Chore</h1>
 
-<%= render 'form', chore: @chore %>
+<div class="forms">
+  <%= render 'form', chore: @chore %>
+</div>
 
-<%= link_to 'Show', @chore %> |
-<%= link_to 'Back', chores_path %>
+<div class="links">
+  <%= link_to 'Cancel', chores_path %>
+</div>
