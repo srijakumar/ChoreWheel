@@ -2,6 +2,7 @@ class TasksController < ApplicationController
 
 #set methods need to run before anything else happens
 before_action :set_chore
+before_action :set_task, except: [:create]#dont want to apply to create
 
   def create
     #which chore is the task being created for
@@ -10,7 +11,6 @@ before_action :set_chore
   end
 
   def destroy
-    @task = @chore.tasks.find(params[:id])
     if @task.destroy
       flash[:success] = "Task was deleted"
     else
@@ -19,11 +19,20 @@ before_action :set_chore
     redirect_to @chore
   end
 
+  def complete
+    @task.update_attribute(:completed_at, Time.now)
+    redirect_to @chore, notice: "Task Completed"
+  end
+
 
   private #applicable to only this controller
 
   def set_chore
     @chore = Chore.find(params[:chore_id])
+  end
+
+  def set_task #refactored since both destroy and complete method use it
+    @task = @chore.tasks.find(params[:id])
   end
 
   def task_params #content is used pretty much in all create, edit, delete

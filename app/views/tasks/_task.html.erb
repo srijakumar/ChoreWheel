@@ -1,3 +1,6 @@
 <p><%= task.content %></p>
 
 <%= link_to "Delete", chore_task_path(@chore, task.id), method: :delete, data: {confirm: "Delete this task?"} %>
+
+
+<%= link_to "Mark as Complete", complete_chore_task_path(@chore, task.id), method: :patch %>
