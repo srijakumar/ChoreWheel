@@ -1,6 +1,25 @@
-<p><%= task.content %></p>
-
-<%= link_to "Delete", chore_task_path(@chore, task.id), method: :delete, data: {confirm: "Delete this task?"} %>
-
-
-<%= link_to "Mark as Complete", complete_chore_task_path(@chore, task.id), method: :patch %>
+<div class="row clearfix">
+  <% if task.completed? %>
+        <div class="complete">
+          <%= link_to "Mark as Complete", complete_chore_task_path(@chore, task.id), method: :patch %>
+          <%# add strikethough or a color change for completed tasks %>
+        </div>
+        <div class="task">
+          <p style = "opacity: 0.4;"><strike><%= task.content %></strike></p>
+        </div>
+        <div class="trash">
+          <%= link_to "Delete", chore_task_path(@chore, task.id), method: :delete, data: {confirm: "Delete this task?"} %>
+        </div>
+  <% else %>
+        <div class="complete">
+          <%= link_to "Mark as Complete", complete_chore_task_path(@chore, task.id), method: :patch %>
+          <%# add strikethough or a color change for completed tasks %>
+        </div>
+        <div class="todo_item">
+          <p><%= task.content %></p>
+        </div>
+        <div class="trash">
+          <%= link_to "Delete", chore_task_path(@chore, task.id), method: :delete, data: {confirm: "Delete this task?"} %>
+        </div>
+  <%end%>
+</div>
