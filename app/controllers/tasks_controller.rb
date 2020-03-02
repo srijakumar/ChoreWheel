@@ -5,7 +5,17 @@ before_action :set_chore
 
   def create
     #which chore is the task being created for
-    @task = @chore.task.create(task_params) #since task is a subroot of the chore
+    @task = @chore.tasks.create(task_params) #since task is a subroot of the chore
+    redirect_to @chore
+  end
+
+  def destroy
+    @task = @chore.tasks.find(params[:id])
+    if @task.destroy
+      flash[:success] = "Task was deleted"
+    else
+      flash[:error] = "Task not deleted. Please try again"
+    end
     redirect_to @chore
   end
 
