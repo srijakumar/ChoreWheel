@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  resources :users, :only => [:new, :create]
+
   resources :chores do
     #nested routes here
     resources :tasks do
@@ -8,6 +11,8 @@ Rails.application.routes.draw do
     end
   end
 
-  root "chores#index"
+  #root "chores#index"
+
+  root "users#new"
 
   end
