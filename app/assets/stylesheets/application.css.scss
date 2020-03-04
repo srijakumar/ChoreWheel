@@ -211,3 +211,7 @@ input[type="submit"]{
     color: white;
   }
 }
+
+.field_with_errors input[type='text']{
+  border: 1px solid red;
+}
