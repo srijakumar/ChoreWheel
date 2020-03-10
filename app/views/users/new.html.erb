@@ -3,6 +3,7 @@
     <h1>Sign up</h1>
       <%= form_for(@user) do |f| %>
         <%= f.text_field :email, :class => "new-todo", :placeholder => "Register with your email" %>
+        <%= f.text_field :password, :class => "new-todo", :placeholder => "Enter password" %>
         <%= f.submit %>
       <% end %>
   </header>
