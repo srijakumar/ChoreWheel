@@ -6,9 +6,12 @@ end
 
 def create
   user = User.find_by(:email => params[:email])
-  session[:user_id] = user.id
-
-  redirect_to root_path
+  if user && user.authenticate(params[:password])
+    session[:user_id] = user.id
+    redirect_to root_path
+  else
+    render 'sessions/new'
+  end
 end
 
 
