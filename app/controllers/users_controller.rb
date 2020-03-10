@@ -14,8 +14,5 @@ def create
     render 'users/new'
   end
 
-  redirect_to root_path
-
 end
-
 end
