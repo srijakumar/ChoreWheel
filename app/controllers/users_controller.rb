@@ -1,3 +1,4 @@
+
 class UsersController < ApplicationController
 
 def new
@@ -13,6 +14,7 @@ def create
     session[:user_id] = @user_id
     redirect_to root_path
   else
+    #byebug
     render 'users/new'
   end
 

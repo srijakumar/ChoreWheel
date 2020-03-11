@@ -7,6 +7,7 @@
         <%= f.submit %>
       <% end %>
   </header>
+  <p class = "errors"> <%= @user.errors.full_messages if @user.errors.any? %> </p>
   <footer class="footer">
   </footer>
 </section>
