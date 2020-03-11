@@ -6,6 +6,7 @@
         <%= f.text_field :password, :class => "new-todo", :placeholder => "Enter password" %>
         <%= f.submit %>
       <% end %>
+      <%= link_to('Log in with Facebook!', '/auth/facebook') %>
   </header>
   <p class = "errors"> <%= @user.errors.full_messages if @user.errors.any? %> </p>
   <footer class="footer">
