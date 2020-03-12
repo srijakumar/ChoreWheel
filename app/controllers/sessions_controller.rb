@@ -6,21 +6,27 @@ end
 
 def create
   if auth_hash = request.env["omniauth.auth"]
-    oauth_email = request.env["omniauth.auth"]["info"]["email"]
-    if user = User.find_by(:email => oauth_email)
-      session[:user_id] = user.id
+    user = User.find_or_create_by_omniauth(auth_hash)
+    session[:user_id] = user.id
 
-      redirect_to root_path
-    else
-      user = User.new(:email => oauth_email, :password => SecureRandom.hex)
-      if user.save
-        session[:user_id] = user.id
+    redirect_to root_path
 
-        redirect_to root_path
-      else
-        raise user.errors.full_messages.inspect
-      end
-    end
+
+    # oauth_email = request.env["omniauth.auth"]["info"]["email"]
+    # if user = User.find_by(:email => oauth_email)
+    #   session[:user_id] = user.id
+    #
+    #   redirect_to root_path
+    # else
+    #   user = User.new(:email => oauth_email, :password => SecureRandom.hex)
+    #   if user.save
+    #     session[:user_id] = user.id
+    #
+    #     redirect_to root_path
+    #   else
+    #     raise user.errors.full_messages.inspect
+    #   end
+    # end
 
 
   else
