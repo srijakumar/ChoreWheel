@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
 
-  before_action :set_task
-  before_action :set_list, except: [:create]
+  #before_action :set_task
+#  before_action :set_list, except: [:create]
 
   def create
     @list = @task.lists.create(list_params)

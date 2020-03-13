@@ -1,9 +1,10 @@
-<h1 class ="todo_list_title">New List</h1>
+<h1 class ="todo_list_title">Do you want to create a list associated with this task?</h1>
 
 <div class="forms">
   <%= render 'form', list: @list %>
 </div>
 
 <div class="links">
-  <%= link_to 'Back', lists_path %>
+  <%= link_to 'Back', chores_path %>
+  <%= link_to 'Cancel', chores_path %>
 </div>
