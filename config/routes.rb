@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       member do #since completed at is part of tasks
         patch :complete
       end
+      resources :lists
     end
   end
 
