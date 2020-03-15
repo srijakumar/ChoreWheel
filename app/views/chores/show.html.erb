@@ -4,7 +4,16 @@
 <p class = "todo_list_subtitle"><%= @chore.description %></p>
 
 <div id="todo_items_wrapper">
-  <%= render @chore.tasks %>
+  <%= @chore.tasks.each do |f| %>
+
+    <%= f.content %>
+    <%= link_to 'View Lists', chore_task_lists_path(@chore, f) %>
+    <%= link_to 'Or create a new list', new_chore_task_list_path(@chore, f) %>
+
+  <% end %>
+
+  <%#= render @chore.tasks %>
+
   <div id="form">
     <%= render "tasks/form" %>
   </div>

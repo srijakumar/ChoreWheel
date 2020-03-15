@@ -9,9 +9,9 @@ before_action :set_task, except: [:create]#dont want to apply to create
     @task = @chore.tasks.create(task_params) #since task is a subroot of the chore
 
     #when the task is created, it is directed to list creation
-    redirect_to :controller => 'list', :action => 'create', notice: "Directing you to build a list associated with this task"
+    #redirect_to :controller => 'list', :action => 'create', notice: "Directing you to build a list associated with this task"
 
-    #redirect_to @chore - this will be moved to lists controller
+    redirect_to @chore 
   end
 
   def destroy
