@@ -4,7 +4,7 @@
 <p class = "todo_list_subtitle"><%= @chore.description %></p>
 
 <div id="todo_items_wrapper">
-  <%= @chore.tasks.each do |f| %>
+  <% @chore.tasks.each do |f| %>
 
     <%= f.content %>
     <%= link_to 'View Lists', chore_task_lists_path(@chore, f) %>

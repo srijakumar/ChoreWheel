@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :categories, only: [:show, :index]
+
   get 'auth/:provider/callback' =>'sessions#create'
   get '/login' => 'sessions#new'
   post '/sessions'=> 'sessions#create'

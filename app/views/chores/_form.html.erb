@@ -21,6 +21,15 @@
     <%= form.text_area :description %>
   </div>
 
+
+  <div class="field">
+    <%= form.fields_for :categories do |c| %>
+          <%= c.label :category, 'Chore Category' %>
+          <%= c.select :category, Category.all.collect { |p| p.name } %>
+      <%end%>
+  </div>
+
+
   <div class="actions">
     <%= form.submit %>
   </div>

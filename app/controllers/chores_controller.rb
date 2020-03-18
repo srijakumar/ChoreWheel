@@ -25,6 +25,9 @@ class ChoresController < ApplicationController
   # POST /chores
   # POST /chores.json
   def create
+
+    @category = Category.find_by(name: category_params[:categories][:category])
+    updated_params = chore_params.merge({category_id: @category.id})
     @chore = Chore.new(chore_params)
 
     respond_to do |format|
@@ -71,5 +74,9 @@ class ChoresController < ApplicationController
     # Only allow a list of trusted parameters through.
     def chore_params
       params.require(:chore).permit(:title, :description)
+    end
+
+    def category_params
+        params.require(:chore).permit(categories: [:category])
     end
 end
