@@ -28,7 +28,7 @@ class ChoresController < ApplicationController
 
     @category = Category.find_by(name: category_params[:categories][:category])
     updated_params = chore_params.merge({category_id: @category.id})
-    @chore = Chore.new(chore_params)
+    @chore = Chore.new(updated_params)
 
     respond_to do |format|
       if @chore.save

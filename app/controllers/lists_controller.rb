@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
 
   before_action :set_task
-  before_action :set_list, except: [:create]
+  before_action :set_list, except: [:new, :create]
 def index
 
   @lists = List.all
@@ -47,6 +47,7 @@ end
   private #applicable to only this controller
 
   def set_task
+    #byebug
     @task = Task.find(params[:task_id])
   end
 
