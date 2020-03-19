@@ -3,14 +3,35 @@ class ListsController < ApplicationController
   #before_action :set_task
 #  before_action :set_list, except: [:create]
 def index
-  
+
   @lists = List.all
 
 end
 
+def new
+  @list = List.new
+end
+
   def create
-    @list = @task.lists.create(list_params)
+    @list = @task.lists.new(list_params)
     redirect_to @task
+  end
+
+  def show
+  end
+
+  def edit
+  end
+
+  def update
+      if @list.update(list_params)
+        redirect_to @list
+        render :show
+      else
+        render :edit
+
+      end
+    end
   end
 
   def destroy
@@ -33,8 +54,7 @@ end
     @list = @task.lists.find(params[:id])
   end
 
-  def list_params #content is used pretty much in all create, edit, delete
-    params[:list].permit(:content)
-  end
 
-end
+  def list_params #content is used pretty much in all create, edit, delete
+    params.require(:list).permit(:content)
+  end
