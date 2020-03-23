@@ -1,12 +1,12 @@
 <%= form_for([@chore, @chore.tasks.build]) do |f|%>
 <%#byebug%>
   <%= f.text_field :content, placeholder: "New Task" %>
-  <%= f.fields_for :lists do |lists_fields| %>
-    <%= lists_fields.label :title %>
-    <%= lists_fields.text_field :title %>
-    <br>
-    <%= lists_fields.label :content %>
-    <%= lists_fields.text_field :content %>
+  <%= f.fields_for :list do |lists_fields| %>
+    <%#= lists_fields.label :title %>
+    <%= lists_fields.text_field :title, placeholder: "List/Note for this task" %>
+
+    <%#= lists_fields.label :content %>
+    <%= lists_fields.text_field :content, placeholder: "Type out your list/note details here" %>
   <% end %>
 
   <%= f.submit %>
@@ -17,7 +17,7 @@
 <%# @chore.tasks.each do |f| %>   <%#= Delete: check syntax lists_fields.check_box :destroy %>
 
   <%#= render f %>
-  <%#= link_to 'View Lists associated with this task', chore_task_path(@chore, f) %> 
+  <%#= link_to 'View Lists associated with this task', chore_task_path(@chore, f) %>
   <%#= link_to 'Or create a new list', new_list_path(f) %>
 
 <%# end %>
