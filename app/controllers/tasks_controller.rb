@@ -4,6 +4,11 @@ class TasksController < ApplicationController
 before_action :set_chore
 before_action :set_task, except: [:create]#dont want to apply to create
 
+  def new
+    @task = Task.new(task_params)
+    @task.lists.build
+  end
+
   def create
     #which chore is the task being created for
     @task = @chore.tasks.create(task_params) #since task is a subroot of the chore
@@ -11,7 +16,7 @@ before_action :set_task, except: [:create]#dont want to apply to create
     #when the task is created, it is directed to list creation
     #redirect_to :controller => 'list', :action => 'create', notice: "Directing you to build a list associated with this task"
 
-    redirect_to @chore 
+    redirect_to @chore
   end
 
   def destroy
@@ -29,6 +34,8 @@ before_action :set_task, except: [:create]#dont want to apply to create
   end
 
 
+
+
   private #applicable to only this controller
 
   def set_chore
@@ -40,7 +47,7 @@ before_action :set_task, except: [:create]#dont want to apply to create
   end
 
   def task_params #content is used pretty much in all create, edit, delete
-    params[:task].permit(:content)
+    params[:task].permit(:content, lists_attributes: [ :title, :content])
   end
 
 end
