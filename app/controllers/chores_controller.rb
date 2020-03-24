@@ -11,6 +11,9 @@ class ChoresController < ApplicationController
   # GET /chores/1
   # GET /chores/1.json
   def show
+    @task = @chore.tasks.build
+    @task.lists.build
+    @task.lists.build
   end
 
   # GET /chores/new

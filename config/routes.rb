@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :chores do
     #nested routes here
+    resources :comments
     resources :tasks do
       member do #since completed at is part of tasks
         patch :complete
@@ -22,6 +23,8 @@ Rails.application.routes.draw do
   resources :tasks do
     resources :lists
   end
+
+  resources :comments
 
 
 

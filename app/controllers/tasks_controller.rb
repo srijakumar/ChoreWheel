@@ -1,22 +1,29 @@
 class TasksController < ApplicationController
 
 #set methods need to run before anything else happens
-before_action :set_chore
+before_action :set_chore, except: [:show]
 before_action :set_task, except: [:create]#dont want to apply to create
+
+  def index
+    @tasks = Task.all
+  end
+
 
   def new
     @task = Task.new(task_params)
-    @task.lists.build
+
   end
 
   def create
     #which chore is the task being created for
     @task = @chore.tasks.create(task_params) #since task is a subroot of the chore
+    #binding.pry
+    #redirect_to @chore
+    redirect_to @task
+  end
 
-    #when the task is created, it is directed to list creation
-    #redirect_to :controller => 'list', :action => 'create', notice: "Directing you to build a list associated with this task"
+  def show
 
-    redirect_to @chore
   end
 
   def destroy
@@ -39,11 +46,12 @@ before_action :set_task, except: [:create]#dont want to apply to create
   private #applicable to only this controller
 
   def set_chore
+    #binding.pry
     @chore = Chore.find(params[:chore_id])
   end
 
   def set_task #refactored since both destroy and complete method use it
-    @task = @chore.tasks.find(params[:id])
+    @task = Task.find_by(id: params[:id])
   end
 
   def task_params #content is used pretty much in all create, edit, delete

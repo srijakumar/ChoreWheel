@@ -14,7 +14,6 @@ end
 
   def create
     @list = @task.lists.new(list_params)
-    redirect_to @task
   end
 
   def show

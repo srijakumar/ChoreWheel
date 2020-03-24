@@ -1,0 +1,5 @@
+<%= form_for([@chore, @chore.comments.build]) do |f|%>
+
+  <%= f.text_field :content, placeholder: "New Comment" %>
+  <%= f.submit %>
+<% end %>
