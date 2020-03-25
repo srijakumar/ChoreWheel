@@ -1,0 +1,13 @@
+<div class="row clearfix">
+
+        <div class="todo_item">
+          <p><%= list.title %></p>
+          <p><%= list.content %></p>
+        </div>
+        <div class="trash">
+          <%= link_to task_list_path(@task, list.id), method: :delete, data: {confirm: "Delete this list?"} do %>
+            <i class="fa fa-trash"></i>
+          <% end %>
+        </div>
+
+</div>

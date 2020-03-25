@@ -1,3 +1,15 @@
-<%= @task.chore.title %>
+<p>The following task was created for the chore: <%= @task.chore.title %></p>
+<br>
+<p>Task: <%= @task.content %></p>
+<p>Please see the notes associated with this task below - </p>
 
-<%= @task.content %>
+<% @task.lists.each do |f| %>
+
+   <%= render f %>
+
+ <% end %>
+
+ <div class="links">
+   <%= link_to 'Back', chore_path(@task.chore_id) %> |
+   <%= link_to 'Home', chores_path %>
+ </div>
