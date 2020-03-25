@@ -2,7 +2,8 @@
 
 <h2 class="todo_list_title"><%= @chore.title %></h2>
 <p class = "todo_list_subtitle"><%= @chore.description %></p>
-<p class = "todo_list_subtitle"><%=@chore.category.name %></p>
+
+<p class = "todo_list_subtitle"> Chore category: <%=@chore.category.name %></p>
 
 <div id="todo_items_wrapper">
 
@@ -10,11 +11,12 @@
 
   <%= render @chore.comments %>
 
-
+<p>Create a new task and note associated with the task below - </p>
   <div id="form">
     <%= render "tasks/form", locals: {task: @task} %>
   </div>
 
+  <p>Please enter any comments associated with the chore below - </p>
   <div id="form">
     <%= render "comments/form" %>
   </div>
@@ -23,7 +25,7 @@
 
 <div class="links">
   <%= link_to 'Edit', edit_chore_path(@chore) %> |
-  <%= link_to 'Back', chores_path %> |
-  <%= link_to 'Delete', chore_path(@chore), method: :delete, data: {confirm: "Are you sure you want to delete this?"} %>|
+  <%= link_to 'Home', chores_path %> |
+  <%= link_to 'Delete', chore_path(@chore), method: :delete, data: {confirm: "Are you sure you want to delete this?"} %> |
   <%= link_to 'View All Comments', comments_path %>
 </div>
