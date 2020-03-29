@@ -2,15 +2,14 @@ class ListsController < ApplicationController
 
   before_action :set_task
   before_action :set_list, except: [:new, :create]
-def index
 
-  @lists = List.all
+  def index
+    @lists = List.all
+  end
 
-end
-
-def new
-  @list = List.new
-end
+  def new
+    @list = List.new
+  end
 
   def create
     @list = @task.lists.new(list_params)
@@ -28,13 +27,12 @@ end
         render :show
       else
         render :edit
-
       end
     end
-  end
+
 
   def destroy
-  
+
     if @list.destroy
       flash[:success] = "List was deleted"
     else
@@ -59,3 +57,5 @@ end
   def list_params #content is used pretty much in all create, edit, delete
     params.require(:list).permit(:content)
   end
+
+end
