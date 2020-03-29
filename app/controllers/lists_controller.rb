@@ -34,6 +34,7 @@ end
   end
 
   def destroy
+  
     if @list.destroy
       flash[:success] = "List was deleted"
     else
