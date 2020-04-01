@@ -1,5 +1,7 @@
-<%= form_for([@chore, @chore.comments.build]) do |f|%>
-
+<%#byebug%>
+<%= form_for(@comment) do |f|%>
+<%= hidden_field_tag :chore_id, @chore.id %>
+<%#= f.hidden_field :chore_id, :value => @chore.id %>
   <%= f.text_field :content, placeholder: "New Comment" %>
   <%= f.submit %>
 <% end %>

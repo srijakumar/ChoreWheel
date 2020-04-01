@@ -13,7 +13,9 @@ class ChoresController < ApplicationController
   def show
     @task = @chore.tasks.build
     @task.lists.build
-    @task.lists.build
+
+    @comment = @chore.comments.build
+    
   end
 
   # GET /chores/new

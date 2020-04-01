@@ -1,3 +1,5 @@
+<% if task.id.present? %>
+
 <div class="row clearfix">
   <% if task.completed? %>
         <div class="complete">
@@ -16,7 +18,7 @@
         </div>
   <% else %>
         <div class="complete">
-          <%= link_to complete_chore_task_path(@chore, task.id), method: :patch do %>
+          <%= link_to complete_chore_task_path(@chore), method: :patch do %>
             <i class="fa fa-check"></i>
           <% end %>
         </div>
@@ -24,9 +26,11 @@
           <p><%= task.content %></p>
         </div>
         <div class="trash">
-          <%= link_to chore_task_path(@chore, task.id), method: :delete, data: {confirm: "Delete this task?"} do %>
+          <%= link_to chore_task_path(@chore), method: :delete, data: {confirm: "Delete this task?"} do %>
             <i class="fa fa-trash"></i>
           <% end %>
         </div>
   <%end%>
 </div>
+
+<%end%>

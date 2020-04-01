@@ -1,16 +1,6 @@
-  <p><%#= binding.pry comment.content %></p>
+<% if comment.id.present? %>
+<div class="todo_item">
+  <p><%= comment.content %></p>
+</div>
 
-
-<!-- <div class="row clearfix">
-
-        <div class="todo_item">
-          <%#= binding.pry %>
-          <p><%= comment.content %></p>
-        </div>
-        <!-- <div class="trash">
-          <%#= link_to task_list_path(@comment, chore.id), method: :delete, data: {confirm: "Delete this comment?"} do %>
-            <i class="fa fa-trash"></i>
-          <%# end %>
-        </div> -->
-
-<!-- </div> -->
+<%end%>

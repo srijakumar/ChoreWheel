@@ -3,7 +3,7 @@
 <h2 class="todo_list_title"><%= @chore.title %></h2>
 <p class = "todo_list_subtitle"><%= @chore.description %></p>
 
-<p class = "todo_list_subtitle"> Chore category: <%=@chore.category.name %></p>
+<p class = "todo_list_subtitle"> Chore category: <%#=@chore.category.name %></p>
 
 <div id="todo_items_wrapper">
 
@@ -31,7 +31,7 @@
 
   <p>Please enter any comments associated with the chore below - </p>
   <div id="form">
-    <%= render "comments/form" %>
+    <%= render "comments/form", locals: {task: @task} %>
   </div>
 
 </div>

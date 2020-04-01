@@ -36,7 +36,8 @@ before_action :set_task, except: [:create]#dont want to apply to create
   end
 
   def complete
-    @task.update_attribute(:completed_at, Time.now)
+    #@task.update_attribute(:completed_at, Time.now)
+    @task.update(completed_at: Time.now)
     redirect_to @chore, notice: "Task Completed"
   end
 
