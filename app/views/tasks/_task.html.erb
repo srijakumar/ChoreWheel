@@ -1,9 +1,9 @@
 <% if task.id.present? %>
-
+<%# @task = Task.find(params[:task_id]) %>
 <div class="row clearfix">
   <% if task.completed? %>
         <div class="complete">
-          <%= link_to complete_chore_task_path(@chore, task.id), method: :patch do %>
+          <%= link_to complete_chore_task_path(@chore, task), method: :patch do %>
             <i style="opacity:0.4;" class="fa fa-check"></i>
           <% end %>
 
@@ -12,13 +12,13 @@
           <p style = "opacity: 0.4;"><strike><%= task.content %></strike></p>
         </div>
         <div class="trash">
-          <%= link_to chore_task_path(@chore, task.id), method: :delete, data: {confirm: "Delete this task?"} do %>
+          <%= link_to chore_task_path(@chore, task), method: :delete, data: {confirm: "Delete this task?"} do %>
             <i class="fa fa-trash"></i>
           <% end %>
         </div>
   <% else %>
         <div class="complete">
-          <%= link_to complete_chore_task_path(@chore), method: :patch do %>
+          <%= link_to complete_chore_task_path(@chore, task), method: :patch do %>
             <i class="fa fa-check"></i>
           <% end %>
         </div>
@@ -26,7 +26,7 @@
           <p><%= task.content %></p>
         </div>
         <div class="trash">
-          <%= link_to chore_task_path(@chore), method: :delete, data: {confirm: "Delete this task?"} do %>
+          <%= link_to chore_task_path(@chore, task), method: :delete, data: {confirm: "Delete this task?"} do %>
             <i class="fa fa-trash"></i>
           <% end %>
         </div>

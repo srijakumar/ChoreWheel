@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
 
-  before_action :set_chore, except: [:create, :show]
+  before_action :set_chore, except: [:show]
   before_action :set_comment, except: [:create]
 
   def new
@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
   def create
     #binding.pry
     @comment = @chore.comments.new(comment_params)
-
+    binding.pry
 
 
     # @comment = @chore.comments.new(user_id: current_user.id)

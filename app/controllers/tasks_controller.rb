@@ -27,6 +27,7 @@ before_action :set_task, except: [:create]#dont want to apply to create
   end
 
   def destroy
+    #binding.pry
     if @task.destroy
       flash[:success] = "Task was deleted"
     else
@@ -36,6 +37,7 @@ before_action :set_task, except: [:create]#dont want to apply to create
   end
 
   def complete
+    #binding.pry
     #@task.update_attribute(:completed_at, Time.now)
     @task.update(completed_at: Time.now)
     redirect_to @chore, notice: "Task Completed"
