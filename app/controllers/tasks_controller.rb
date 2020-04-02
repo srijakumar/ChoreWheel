@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
 
 #set methods need to run before anything else happens
-before_action :set_chore, except: [:edit, :show]
+before_action :set_chore, except: [:edit, :show, :update]
 before_action :set_task, except: [:create]#dont want to apply to create
 
   def index
@@ -27,9 +27,21 @@ before_action :set_task, except: [:create]#dont want to apply to create
   end
 
   def edit
-    binding.pry
-    @chore = @task.chore
+    #binding.pry
+    @task.chore_id
     #this is so I can set the chore id
+  end
+
+  def update
+    respond_to do |format|
+      if @task.update(task_params)
+        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
+        #format.json { render :show, status: :ok, location: @chore }
+      else
+        format.html { render :edit }
+      #  format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
 

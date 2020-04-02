@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
   def create
     #binding.pry
     @comment = @chore.comments.new(comment_params)
-    binding.pry
+    #binding.pry
 
 
     # @comment = @chore.comments.new(user_id: current_user.id)
