@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
 
 #set methods need to run before anything else happens
-before_action :set_chore, except: [:show]
+before_action :set_chore, except: [:edit, :show]
 before_action :set_task, except: [:create]#dont want to apply to create
 
   def index
@@ -25,6 +25,14 @@ before_action :set_task, except: [:create]#dont want to apply to create
   def show
 
   end
+
+  def edit
+    binding.pry
+    @chore = @task.chore
+    #this is so I can set the chore id
+  end
+
+
 
   def destroy
     #binding.pry

@@ -11,5 +11,6 @@
 
  <div class="links">
    <%= link_to 'Back', chore_path(@task.chore_id) %> |
-   <%= link_to 'Home', chores_path %>
+   <%= link_to 'Home', chores_path %> |
+   <%= link_to 'Edit', edit_task_path(@task) %>
  </div>

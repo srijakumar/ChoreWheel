@@ -11,11 +11,18 @@
         <div class="todo_item">
           <p style = "opacity: 0.4;"><strike><%= task.content %></strike></p>
         </div>
+
+
         <div class="trash">
           <%= link_to chore_task_path(@chore, task), method: :delete, data: {confirm: "Delete this task?"} do %>
             <i class="fa fa-trash"></i>
           <% end %>
         </div>
+
+
+
+
+
   <% else %>
         <div class="complete">
           <%= link_to complete_chore_task_path(@chore, task), method: :patch do %>
@@ -24,6 +31,7 @@
         </div>
         <div class="todo_item">
           <p><%= task.content %></p>
+          <p><%= link_to "View this task", task_path(task) %></p>
         </div>
         <div class="trash">
           <%= link_to chore_task_path(@chore, task), method: :delete, data: {confirm: "Delete this task?"} do %>
