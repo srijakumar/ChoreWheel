@@ -28,8 +28,8 @@ before_action :set_task, except: [:create]#dont want to apply to create
 
   def edit
     #binding.pry
-    @task.chore_id
-    #this is so I can set the chore id
+    #@task.chore_id
+    @task.lists.build unless @task.lists.any?
   end
 
   def update
@@ -78,7 +78,7 @@ before_action :set_task, except: [:create]#dont want to apply to create
   end
 
   def task_params #content is used pretty much in all create, edit, delete
-    params[:task].permit(:content, lists_attributes: [ :title, :content])
+    params[:task].permit(:content, lists_attributes: [ :id, :title, :content])
   end
 
 end
