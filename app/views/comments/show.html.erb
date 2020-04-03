@@ -1,12 +1,14 @@
+<% binding.pry %>
 <p>The following comments were recorded for the chore: <%= @chore.title %></p>
 <br>
 
+<p>Task: <%= @task.content %></p>
 
-<% @chore.comments.each do |f| %>
+<%# @chore.comments.each do |f| %>
+<% binding.pry %>
+   <%#= render f %>
 
-   <%= render f %>
-
- <% end %>
+ <%# end %>
 
  <div class="links">
    <%= link_to 'Back', chore_path(@task.chore_id) %> |

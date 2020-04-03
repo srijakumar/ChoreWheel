@@ -1,7 +1,12 @@
 class CommentsController < ApplicationController
 
-  before_action :set_chore, except: [:show]
+  before_action :set_chore, except: [:edit, :show, :update]
   before_action :set_comment, except: [:create]
+
+  def index
+
+    @comments = Comment.all
+  end
 
   def new
     @comment = Comment.new
@@ -10,7 +15,9 @@ class CommentsController < ApplicationController
   def create
     #binding.pry
     @comment = @chore.comments.new(comment_params)
-    #binding.pry
+
+    redirect_to @chore
+
 
 
     # @comment = @chore.comments.new(user_id: current_user.id)
@@ -19,7 +26,7 @@ class CommentsController < ApplicationController
   end
 
   def show
-
+    binding.pry
   end
 
   def edit
@@ -52,5 +59,7 @@ private
   def comment_params #content is used pretty much in all create, edit, delete
     params[:comment].permit(:content, :chore_id)
   end
+
+
 
 end
