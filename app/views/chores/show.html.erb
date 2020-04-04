@@ -13,20 +13,14 @@
   <%#= render @chore.tasks %>
 
 <% @chore.tasks.each do |f| %>
-
    <%= render f %>
-
  <% end %>
 
+ <% @chore.comments.each do |c| %>
+    <%= render c %>
+  <% end %>
 
-<%#= binding.pry %>
-
-
-
-
-
-
-  <%= render @chore.comments %>
+ <%#= binding.pry %>
 
 <p>Create a new task and note associated with the task below - </p>
   <div id="form">

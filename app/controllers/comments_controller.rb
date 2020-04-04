@@ -13,11 +13,12 @@ class CommentsController < ApplicationController
   end
 
   def create
-    #binding.pry
     @comment = @chore.comments.new(comment_params)
+    redirect_to @comment
 
-    redirect_to @chore
+    #redirect_to controller: :Chores, action: :show
 
+    #binding.pry
 
 
     # @comment = @chore.comments.new(user_id: current_user.id)

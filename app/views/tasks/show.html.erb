@@ -3,11 +3,14 @@
 <p>Task: <%= @task.content %></p>
 <p>Please see the notes associated with this task below - </p>
 
+<div id="todo_items_wrapper">
 <% @task.lists.each do |f| %>
 
    <%= render f %>
 
  <% end %>
+
+ </div>
 
  <div class="links">
    <%= link_to 'Back', chore_path(@task.chore_id) %> |
