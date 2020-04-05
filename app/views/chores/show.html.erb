@@ -8,31 +8,38 @@
 <div id="todo_items_wrapper">
 
   <%#= binding.pry %>
-
-
   <%#= render @chore.tasks %>
 
 <% @chore.tasks.each do |f| %>
    <%= render f %>
  <% end %>
 
- <% @chore.comments.each do |c| %>
-    <%= render c %>
-  <% end %>
 
- <%#= binding.pry %>
 
-<p>Create a new task and note associated with the task below - </p>
+<br>
+
+
+ <%# @chore.comments.each do |c| %>
+  <%#= binding.pry %>
+    <%#= render c %>
+  <%# end %>
+
+
+<p class = "todo_list_subtitle">Create a new task and note associated with the task below - </p>
   <div id="form">
     <%= render "tasks/form", locals: {task: @task} %>
   </div>
 
-  <p>Please enter any comments associated with the chore below - </p>
+  <br>
+
+  <p class = "todo_list_subtitle">Enter any comments associated with the chore below - </p>
   <div id="form">
     <%= render "comments/form" %>
   </div>
 
 </div>
+
+
 
 <div class="links">
   <%= link_to 'Edit', edit_chore_path(@chore) %> |

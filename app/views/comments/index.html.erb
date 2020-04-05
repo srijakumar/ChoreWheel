@@ -1,14 +1,19 @@
-<p>The following comments were recorded for the chore: <%= @comment.chore.title %></p>
-<br>
+   <%# @chore.comments.each do |f| %>
+      <p><%#= render f %></p>
+      <p><%#= link_to "View this task", task_path(task) %></p>
+    <%# end %>
+
+  <p id="notice"><%= notice %></p>
+  <p>The following comments were recorded for the chore: <%= @chore.title %></p>
+  <br>
+  <% @chore.comments.each do |comment|%>
+    <div class="index_row clearfix">
+      <h2 class="todo_list_title"><%= link_to comment.content, comment %></h2>
+
+    </div>
+  <% end %>
 
 
-<% @chore.comments.each do |f| %>
-
-   <%= render f.content %>
-
- <% end %>
-
- <div class="links">
-   <%#= link_to 'Back', chore_path(@task.chore_id) %> |
-   <%= link_to 'Home', chores_path %>
- </div>
+  <div class="links">
+    <%= link_to 'Home', chores_path %>
+  </div>
