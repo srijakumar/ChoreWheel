@@ -12,6 +12,7 @@ def create
 
   if @user.save
     session[:user_id] = @user_id
+
     redirect_to root_path
   else
     #byebug

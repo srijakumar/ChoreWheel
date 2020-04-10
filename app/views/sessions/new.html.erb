@@ -1,6 +1,7 @@
 <section class="todoapp">
   <header class="header">
-    <h1>Welcome to ChoreWheel! Please log in to see the chores available for this week!</h1>
+    <h1>Welcome to TIME-MANAGE-O!</h1>
+      <h2>Please log in to see the chores available for this week!</h2>
       <%= form_tag(sessions_path) do |f| %>
         <%= text_field_tag :email, '', :class => "new-todo", :placeholder => "Login with your email" %>
         <%= password_field_tag :password, '', :class => "new-todo", :placeholder => "Enter password" %>
