@@ -14,9 +14,8 @@
    <%= render f %>
  <% end %>
 
+  <%#= binding.pry %>
 
-
-<br>
 
 
  <%# @chore.comments.each do |c| %>
@@ -25,6 +24,8 @@
   <%# end %>
 
 
+<br>
+<br>
 <p class = "todo_list_subtitle">Create a new task and note associated with the task below - </p>
   <div id="form">
     <%= render "tasks/form", locals: {task: @task} %>
@@ -40,6 +41,34 @@
 </div>
 
 
+<br>
+<br>
+
+<p class = "todo_list_subtitle">Chore: <%= @chore.title %> - Please see all lists below - </p>
+<div id="todo_items_wrapper">
+<%#= This is to test if I can access all chore lists  %>
+
+  <% @chore.lists.each do |c| %>
+   <% if c.content != ""%>
+     <ul>
+       <li><p>List Title: <%= c.title %> ---- List Content: <%= c.content %></p></li>
+     </ul>
+   <% end %>
+<% end %>
+</div>
+<br>
+<br>
+<p class = "todo_list_subtitle">Chore: <%= @chore.title %> - Please see all the comments created below - </p>
+<div id="todo_items_wrapper">
+<%#= This is to test if I can access all chore lists  %>
+  <% @chore.comments.each do |d| %>
+   <% if d.content != ""%>
+     <ul>
+       <li><p>Comment: <%= d.content %></p></li>
+     </ul>
+   <% end %>
+<% end %>
+</div>
 
 <div class="links">
   <%= link_to 'Edit', edit_chore_path(@chore) %> |
