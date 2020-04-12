@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
+  has_many :chores
   has_many :comments, through: :chores
   validates :email, presence: {:message => "You need an email to register"}
   validates :email, uniqueness: {:message => "This email is already in use"}

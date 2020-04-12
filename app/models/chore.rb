@@ -7,4 +7,7 @@ class Chore < ApplicationRecord
 
     validates :title, presence: true
 
+
+    scope :recent, -> {order(created_at: :desc)}
+    #scope :ordered_by_title, -> { order(title: :asc) }
 end

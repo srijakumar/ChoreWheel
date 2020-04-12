@@ -1,5 +1,6 @@
 
 class UsersController < ApplicationController
+  before_action :authentication_required
 
 def new
   @user = User.new
@@ -18,6 +19,11 @@ def create
     #byebug
     render 'users/new'
   end
+
+  # def chores
+  #   @chores=@user.chores
+  #
+  # end
 
 end
 end

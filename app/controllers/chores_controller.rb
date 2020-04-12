@@ -4,27 +4,14 @@ class ChoresController < ApplicationController
 
   # GET /chores
   # GET /chores.json
-  def index
+  def chores
     @chores = Chore.all
-  end
-
-  # GET /chores/1
-  # GET /chores/1.json
-  def show
-    @task = @chore.tasks.build
-    @task.lists.build
-
-    @comment = @chore.comments.build
-    
   end
 
   # GET /chores/new
   def new
-    @chore = Chore.new
-  end
-
-  # GET /chores/1/edit
-  def edit
+    #@chore = Chore.new
+    @chore = current_user.chores.build
   end
 
   # POST /chores
@@ -33,7 +20,9 @@ class ChoresController < ApplicationController
 
     @category = Category.find_by(name: category_params[:categories][:category])
     updated_params = chore_params.merge({category_id: @category.id})
-    @chore = Chore.new(updated_params)
+    #@chore = Chore.new(updated_params)
+    @chore = current_user.chores.build(updated_params)
+    #binding.pry
 
     respond_to do |format|
       if @chore.save
@@ -45,6 +34,27 @@ class ChoresController < ApplicationController
       end
     end
   end
+
+
+
+  # GET /chores/1
+  # GET /chores/1.json
+  def show
+   #binding.pry
+    @task = @chore.tasks.build
+    @task.lists.build
+
+    @comment = @chore.comments.build
+
+  end
+
+
+
+  # GET /chores/1/edit
+  def edit
+  end
+
+
 
   # PATCH/PUT /chores/1
   # PATCH/PUT /chores/1.json
@@ -78,7 +88,7 @@ class ChoresController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def chore_params
-      params.require(:chore).permit(:title, :description, :category_id)
+      params.require(:chore).permit(:title, :description, :category_id, :user_id)
     end
 
     def category_params
