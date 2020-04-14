@@ -1,17 +1,34 @@
 <p id="notice"><%= notice %></p>
 <h2 class="todo_list_title">Welcome to Time-Manage-O!</h2>
 <%# binding.pry %>
-<% current_user.chores.recent.each do |chore|%>
+<% @chores.each do |chore|%>
   <div class="index_row clearfix">
     <h2 class="todo_list_title"><%= link_to chore.title, chore %></h2>
     <p class="todo_list_subtitle"><%= chore.description %></p>
   </div>
 <% end %>
 
-<% #binding.pry %>
+<%#binding.pry%>
+<%#binding.pry %>
+
+<p class = "todo_list_subtitle"> Please see all your comments below - </p>
+<div id="todo_items_wrapper">
+  <% current_user.comments.each do |d| %>
+
+   <% if d.content != ""%>
+     <ul>
+       <li><p>Comment: <%= d.content %></p></li>
+     </ul>
+   <% end %>
+<% end %>
+</div>
 
 <div class="links">
   <%= link_to "New Chores", new_chore_path %>
+</div>
+
+<div class="links">
+  <%= link_to 'View All Comments', comments_path %>
 </div>
 
 <footer class = "footer">

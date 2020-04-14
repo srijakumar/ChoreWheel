@@ -1,6 +1,5 @@
 
 class UsersController < ApplicationController
-  before_action :authentication_required
 
 def new
   @user = User.new
@@ -12,7 +11,7 @@ def create
   @user.password = params[:user][:password]
 
   if @user.save
-    session[:user_id] = @user_id
+    session[:user_id] = @user.id
 
     redirect_to root_path
   else

@@ -33,7 +33,7 @@
 
   <br>
 
-  <p class = "todo_list_subtitle">Enter any comments associated with the chore below - </p>
+  <p class = "todo_list_subtitle">Any questions/comments about the app? </p>
   <div id="form">
     <%= render "comments/form" %>
   </div>
@@ -58,17 +58,9 @@
 </div>
 <br>
 <br>
-<p class = "todo_list_subtitle">Chore: <%= @chore.title %> - Please see all the comments created below - </p>
-<div id="todo_items_wrapper">
-<%#= This is to test if I can access all chore lists  %>
-  <% @chore.comments.each do |d| %>
-   <% if d.content != ""%>
-     <ul>
-       <li><p>Comment: <%= d.content %></p></li>
-     </ul>
-   <% end %>
-<% end %>
-</div>
+
+
+
 
 <div class="links">
   <%= link_to 'Edit', edit_chore_path(@chore) %> |

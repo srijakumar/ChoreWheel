@@ -5,7 +5,8 @@ class CommentsController < ApplicationController
 
   def index
     #binding.pry
-    @comments = Comment.all
+    @comments = current_user.comments
+
   end
 
   def new
@@ -14,7 +15,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @chore.comments.create(comment_params)
-    #binding.pry
+    binding.pry
     #redirect_to @comment
     render '/comments/show'
 

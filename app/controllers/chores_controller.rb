@@ -4,8 +4,11 @@ class ChoresController < ApplicationController
 
   # GET /chores
   # GET /chores.json
-  def chores
-    @chores = Chore.all
+  def index
+    #@chores = Chore.all
+    @chores = current_user.chores.recent
+    #binding.pry
+    
   end
 
   # GET /chores/new
