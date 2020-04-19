@@ -24,7 +24,7 @@ class ChoresController < ApplicationController
     #@category_all = Category.find(name: category_params[:categories][])
     #updated_params = chore_params.merge({category_ids: @category_all.ids})
     #@chore = current_user.chores.build(updated_params)
-    #binding.prys
+  #  binding.pry
     @chore = current_user.chores.build(chore_params)
 
     respond_to do |format|

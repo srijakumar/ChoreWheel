@@ -5,9 +5,9 @@
 <p class = "todo_list_subtitle"><%= @chore.description %></p>
 
 <%#binding.pry%>
-<p class = "todo_list_subtitle"> Chore category: <%=@chore.categories.each do |c| %>
+<p class = "todo_list_subtitle"> Chore category: <%@chore.categories.each do |c| %>
   <%= render c %>
-  <% end %>
+<% end %>
 </p>
 
 <div id="todo_items_wrapper">

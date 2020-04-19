@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @chore.comments.create(comment_params)
-    binding.pry
+    #binding.pry
     #redirect_to @comment
     render '/comments/show'
 
