@@ -13,21 +13,45 @@
 
   <div class="field">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, placeholder: "Enter title here" %>
   </div>
+
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, placeholder: "Enter a detailed description of the chore here and select one/multiple categories that your chore belongs to below" %>
   </div>
 
 
   <div class="field">
-    <%= form.fields_for :categories do |c| %>
-          <%= c.label :category, 'Chore Category' %>
-          <%= c.select :category, Category.all.collect { |p| p.name } %>
-      <%end%>
+  <%= form.label "Categories" %><br />
+  <%= form.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>
+    <div class="collection-check-box">
+      <%= b.check_box %>
+      <%= b.label %>
+    </div>
+  <% end %>
+</div>
+
+<!-- <div class="field">
+  <%#=collection_check_boxes(:chore, :category_ids, Category.all, :id, :name) %>
+</div> This works-->
+
+    <%#= form_for @chore do |f| %>
+      <%# Category.all.each do |i| %>
+        <div><%#= i.name %> <%#= check_box_tag 'chore[categories][]', i.id, @chore.categories.detect{|ui| ui.name == i.name} %></div>
+      <%# end %>
+    <%# end %>
+
+
+  <!-- <div class="field">
+    <%#= form.fields_for :categories do |c| %>
+          <%#= c.label :category, 'Chore Category 1' %>
+          <%#= c.select :category, Category.all.collect { |p| p.name } %>
+      <%#end%>
   </div>
+  <br> -->
+
 
 
   <div class="actions">
