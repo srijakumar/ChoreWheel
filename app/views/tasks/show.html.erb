@@ -5,13 +5,11 @@
 
 <div id="todo_items_wrapper">
 <% @task.lists.each do |f| %>
-<% #binding.pry %>
-
-<%if f.content == "" %>
-<p>***No list has been created for this task yet!***</p>
-<% else %>
+  <%if f.content == "" %>
+    <p>***No list has been created for this task yet!***</p>
+  <% else %>
    <%= render f %>
-<% end %>
+  <% end %>
  <% end %>
 
  </div>

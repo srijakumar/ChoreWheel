@@ -4,7 +4,6 @@
 
 <p class = "todo_list_subtitle"><%= @chore.description %></p>
 
-<%#binding.pry%>
 <p class = "todo_list_subtitle"> Chore category: <%@chore.categories.each do |c| %>
   <%= render c %>
 <% end %>
@@ -12,22 +11,10 @@
 
 <div id="todo_items_wrapper">
 
-  <%#= binding.pry %>
-  <%#= render @chore.tasks %>
 
 <% @chore.tasks.each do |f| %>
    <%= render f %>
  <% end %>
-
-  <%#= binding.pry %>
-
-
-
- <%# @chore.comments.each do |c| %>
-  <%#= binding.pry %>
-    <%#= render c %>
-  <%# end %>
-
 
 <br>
 <br>
@@ -51,8 +38,6 @@
 
 <p class = "todo_list_subtitle">Chore: <%= @chore.title %> - Please see all lists below - </p>
 <div id="todo_items_wrapper">
-<%#= This is to test if I can access all chore lists  %>
-
   <% @chore.lists.each do |c| %>
    <% if c.content != ""%>
      <ul>
@@ -63,9 +48,6 @@
 </div>
 <br>
 <br>
-
-
-
 
 <div class="links">
   <%= link_to 'Edit', edit_chore_path(@chore) %> |

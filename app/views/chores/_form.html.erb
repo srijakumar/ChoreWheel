@@ -33,27 +33,6 @@
   <% end %>
 </div>
 
-<!-- <div class="field">
-  <%#=collection_check_boxes(:chore, :category_ids, Category.all, :id, :name) %>
-</div> This works-->
-
-    <%#= form_for @chore do |f| %>
-      <%# Category.all.each do |i| %>
-        <div><%#= i.name %> <%#= check_box_tag 'chore[categories][]', i.id, @chore.categories.detect{|ui| ui.name == i.name} %></div>
-      <%# end %>
-    <%# end %>
-
-
-  <!-- <div class="field">
-    <%#= form.fields_for :categories do |c| %>
-          <%#= c.label :category, 'Chore Category 1' %>
-          <%#= c.select :category, Category.all.collect { |p| p.name } %>
-      <%#end%>
-  </div>
-  <br> -->
-
-
-
   <div class="actions">
     <%= form.submit %>
   </div>

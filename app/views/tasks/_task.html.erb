@@ -1,5 +1,4 @@
 <% if task.id.present? %>
-<%# @task = Task.find(params[:task_id]) %>
 <div class="row clearfix">
   <% if task.completed? %>
         <div class="complete">
@@ -18,10 +17,6 @@
             <i class="fa fa-trash"></i>
           <% end %>
         </div>
-
-
-
-
 
   <% else %>
         <div class="complete">

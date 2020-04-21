@@ -1,6 +1,5 @@
 <p id="notice"><%= notice %></p>
 <h2 class="todo_list_title">Welcome to Time-Manage-O!</h2>
-<%# binding.pry %>
 <% @chores.each do |chore|%>
   <div class="index_row clearfix">
     <h2 class="todo_list_title"><%= link_to chore.title, chore %></h2>
@@ -8,13 +7,9 @@
   </div>
 <% end %>
 
-<%#binding.pry%>
-<%#binding.pry %>
-
 <p class = "todo_list_subtitle"> Please see all your comments below - </p>
 <div id="todo_items_wrapper">
   <% current_user.comments.each do |d| %>
-
    <% if d.content != ""%>
      <ul>
        <li><p>Comment: <%= d.content %></p></li>
@@ -22,9 +17,6 @@
    <% end %>
 <% end %>
 </div>
-
-
-
 
 <div class="links">
   <%= link_to "New Chores", new_chore_path %>
