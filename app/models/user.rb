@@ -12,15 +12,5 @@ class User < ApplicationRecord
     self.where(:email => oauth_email).first_or_create do |user|
       user.password = SecureRandom.hex
     end
-    # refactored above
-    # if user = User.find_by(:email => oauth_email)
-    #   return user
-    # else
-    #   user = User.create(:email => oauth_email, :password => SecureRandom.hex)
-    # end
-
-
   end
-
-
 end

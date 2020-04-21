@@ -1,6 +1,5 @@
 class TasksController < ApplicationController
 
-#set methods need to run before anything else happens
 before_action :set_chore, except: [:edit, :show, :update]
 before_action :set_task, except: [:create]#dont want to apply to create
 
@@ -15,10 +14,7 @@ before_action :set_task, except: [:create]#dont want to apply to create
   end
 
   def create
-    #which chore is the task being created for
-    @task = @chore.tasks.create(task_params) #since task is a subroot of the chore
-    #binding.pry
-    #redirect_to @chore
+    @task = @chore.tasks.create(task_params)
     redirect_to @task
   end
 
@@ -27,8 +23,6 @@ before_action :set_task, except: [:create]#dont want to apply to create
   end
 
   def edit
-    #binding.pry
-    #@task.chore_id
     @task.lists.build unless @task.lists.any?
   end
 
@@ -36,10 +30,8 @@ before_action :set_task, except: [:create]#dont want to apply to create
     respond_to do |format|
       if @task.update(task_params)
         format.html { redirect_to @task, notice: 'Task was successfully updated.' }
-        #format.json { render :show, status: :ok, location: @chore }
       else
         format.html { render :edit }
-      #  format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -47,7 +39,6 @@ before_action :set_task, except: [:create]#dont want to apply to create
 
 
   def destroy
-    #binding.pry
     if @task.destroy
       flash[:success] = "Task was deleted"
     else
@@ -57,8 +48,6 @@ before_action :set_task, except: [:create]#dont want to apply to create
   end
 
   def complete
-    #binding.pry
-    #@task.update_attribute(:completed_at, Time.now)
     @task.update(completed_at: Time.now)
     redirect_to @chore, notice: "Task Completed"
   end
@@ -66,18 +55,17 @@ before_action :set_task, except: [:create]#dont want to apply to create
 
 
 
-  private #applicable to only this controller
+  private
 
   def set_chore
-    #binding.pry
     @chore = Chore.find(params[:chore_id])
   end
 
-  def set_task #refactored since both destroy and complete method use it
+  def set_task
     @task = Task.find_by(id: params[:id])
   end
 
-  def task_params #content is used pretty much in all create, edit, delete
+  def task_params
     params[:task].permit(:content, lists_attributes: [ :id, :title, :content])
   end
 

@@ -4,10 +4,6 @@ class Task < ApplicationRecord
   accepts_nested_attributes_for :lists
 
   def completed?
-    !completed_at.blank? #if time is not present, then task not completed. re method complete in task controller
+    !completed_at.blank?
   end
-
-  #scope :recent, -> {order(created_at: :asc)}
-
-
 end

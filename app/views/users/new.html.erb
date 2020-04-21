@@ -7,6 +7,7 @@
         <%= f.submit %>
       <% end %>
       <p><%= link_to('Or log in with facebook', '/auth/facebook') %></p>
+      <p><%= link_to('Already a user? Log in', login_path) %></p>
   </header>
   <p class = "errors"> <%= @user.errors.full_messages if @user.errors.any? %> </p>
   <footer class="footer">

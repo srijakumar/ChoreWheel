@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
 
 def new
-
 end
 
 def create
@@ -11,30 +10,13 @@ def create
 
     redirect_to root_path
 
-
-    # oauth_email = request.env["omniauth.auth"]["info"]["email"]
-    # if user = User.find_by(:email => oauth_email)
-    #   session[:user_id] = user.id
-    #
-    #   redirect_to root_path
-    # else
-    #   user = User.new(:email => oauth_email, :password => SecureRandom.hex)
-    #   if user.save
-    #     session[:user_id] = user.id
-    #
-    #     redirect_to root_path
-    #   else
-    #     raise user.errors.full_messages.inspect
-    #   end
-    # end
-
-
   else
       user = User.find_by(:email => params[:email])
       if user && user.authenticate(params[:password])
         session[:user_id] = user.id
         redirect_to root_path
       else
+        flash[:notice] = "Your username and password do not match. Please try again."
         render 'sessions/new'
       end
     end

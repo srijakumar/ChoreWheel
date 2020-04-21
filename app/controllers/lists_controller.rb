@@ -44,19 +44,18 @@ class ListsController < ApplicationController
   end
 
 
-  private #applicable to only this controller
+  private
 
   def set_task
-    #byebug
     @task = Task.find(params[:task_id])
   end
 
-  def set_list #refactored since both destroy and complete method use it
+  def set_list
     @list = @task.lists.find(params[:id])
   end
 
 
-  def list_params #content is used pretty much in all create, edit, delete
+  def list_params 
     params.require(:list).permit(:content)
   end
 

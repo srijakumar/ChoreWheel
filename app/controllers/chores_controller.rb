@@ -2,29 +2,16 @@ class ChoresController < ApplicationController
   before_action :set_chore, only: [:show, :edit, :update, :destroy]
   before_action :authentication_required
 
-  # GET /chores
-  # GET /chores.json
+
   def index
-    #@chores = Chore.all
     @chores = current_user.chores.recent
-    #binding.pry
-
   end
 
-  # GET /chores/new
   def new
-    #@chore = Chore.new
     @chore = current_user.chores.build
-
   end
 
-  # POST /chores
-  # POST /chores.json
   def create
-    #@category_all = Category.find(name: category_params[:categories][])
-    #updated_params = chore_params.merge({category_ids: @category_all.ids})
-    #@chore = current_user.chores.build(updated_params)
-  #  binding.pry
     @chore = current_user.chores.build(chore_params)
 
     respond_to do |format|
@@ -38,29 +25,16 @@ class ChoresController < ApplicationController
     end
   end
 
-
-
-  # GET /chores/1
-  # GET /chores/1.json
   def show
-   #binding.pry
     @task = @chore.tasks.build
     @task.lists.build
-
     @comment = @chore.comments.build
-
   end
 
 
-
-  # GET /chores/1/edit
   def edit
   end
 
-
-
-  # PATCH/PUT /chores/1
-  # PATCH/PUT /chores/1.json
   def update
     respond_to do |format|
       if @chore.update(chore_params)
@@ -73,8 +47,6 @@ class ChoresController < ApplicationController
     end
   end
 
-  # DELETE /chores/1
-  # DELETE /chores/1.json
   def destroy
     @chore.destroy
     respond_to do |format|
@@ -84,17 +56,12 @@ class ChoresController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_chore
       @chore = Chore.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def chore_params
       params.require(:chore).permit(:title, :description, :user_id, category_ids:[])
     end
 
-    # def category_params
-    #     params.require(:chore).permit(:name, category_ids:[])
-    # end
 end

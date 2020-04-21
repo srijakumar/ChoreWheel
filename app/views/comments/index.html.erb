@@ -4,12 +4,12 @@
     <%# end %>
 
   <p id="notice"><%= notice %></p>
-  <p>All user comments (not current user specific):</p>
+  <p>All comments entered by you! Please click on them to edit or delete</p>
   <br>
 
   <% @comments.each do |comment|%>
     <div class="index_row clearfix">
-      <h2 class="todo_list_title">Print user name said :<%= link_to comment.content, comment %></h2>
+      <h2 class="todo_list_title"><%= link_to comment.content, comment %></h2>
 
     </div>
   <% end %>

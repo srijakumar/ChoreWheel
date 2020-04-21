@@ -15,14 +15,8 @@ def create
 
     redirect_to root_path
   else
-    #byebug
     render 'users/new'
   end
-
-  # def chores
-  #   @chores=@user.chores
-  #
-  # end
 
 end
 end
