@@ -3,14 +3,12 @@ class TasksController < ApplicationController
 before_action :set_chore, except: [:edit, :show, :update]
 before_action :set_task, except: [:create]#dont want to apply to create
 
-  def index
-    @tasks = Task.all
-  end
-
+def index
+  @tasks = Task.all
+end
 
   def new
     @task = Task.new(task_params)
-
   end
 
   def create
