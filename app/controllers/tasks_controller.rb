@@ -4,7 +4,7 @@ before_action :set_chore, except: [:edit, :show, :update]
 before_action :set_task, except: [:create]#dont want to apply to create
 
 def index
-  @tasks = Task.all
+  @tasks = @chore.tasks.all
 end
 
   def new

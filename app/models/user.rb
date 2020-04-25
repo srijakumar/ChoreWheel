@@ -13,4 +13,11 @@ class User < ApplicationRecord
       user.password = SecureRandom.hex
     end
   end
+
+  def top_categories
+    #binding.pry
+   Category.most_popular(self)
+  end
+
+
 end

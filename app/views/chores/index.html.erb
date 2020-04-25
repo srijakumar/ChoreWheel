@@ -7,16 +7,33 @@
   </div>
 <% end %>
 
+<p class="todo_list_title">All your comments </p>
 <p class = "todo_list_subtitle"> Please see all your comments below - </p>
-<div id="todo_items_wrapper">
+<div id="index_row clearfix">
   <% current_user.comments.each do |d| %>
    <% if d.content != ""%>
      <ul>
        <li><p>Comment: <%= d.content %></p></li>
      </ul>
+   <% else %>
+    <p class="todo_list_subtitle">You have no comments</p>
    <% end %>
 <% end %>
 </div>
+
+<br>
+
+<p class="todo_list_title">Top 3 Categories among all users</p>
+  <div class="index_row clearfix">
+    <% if current_user.top_categories.any? %>
+      <% current_user.top_categories.each do |cat| %>
+        <p class="todo_list_subtitle"><%= cat.name %></p>
+        <p class="todo_list_subtitle">-number of users who use this category: <%= cat.number_of_users %></p>
+      <% end %>
+    <% else %>
+    <p class="todo_list_subtitle">You have no chore categories</p>
+    <% end %>
+  </div>
 
 <div class="links">
   <%= link_to "New Chores", new_chore_path %>
@@ -25,6 +42,7 @@
 <div class="links">
   <%= link_to 'View All Comments', comments_path %>
 </div>
+
 
 <footer class = "footer">
   <p>You're logged in as: <%=current_user.email %> </p>
