@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :comments, through: :chores
   validates :email, presence: {:message => "You need an email to register"}
   validates :email, uniqueness: {:message => "This email is already in use"}
+  has_many :tasks, through: :chores
 
   def self.find_or_create_by_omniauth(auth_hash)
 
@@ -15,9 +16,14 @@ class User < ApplicationRecord
   end
 
   def top_categories
-    #binding.pry
    Category.most_popular(self)
   end
+
+
+  def top_chore
+   Chore.most_tasks(self)
+  end
+
 
 
 end

@@ -7,6 +7,8 @@ def index
   @tasks = @chore.tasks.all
 end
 
+
+
   def new
     @task = Task.new(task_params)
   end

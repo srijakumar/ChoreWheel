@@ -4,8 +4,10 @@ class ChoresController < ApplicationController
 
 
   def index
+    #binding.pry
     @chores = current_user.chores.recent
   end
+
 
   def new
     @chore = current_user.chores.build

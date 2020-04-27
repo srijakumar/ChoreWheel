@@ -23,6 +23,21 @@
 
 <br>
 
+
+
+
+<p class="todo_list_title">Chore with maximum number of tasks</p>
+  <div class="index_row clearfix">
+
+    <%# binding.pry %>
+    <p class="todo_list_subtitle"><%= current_user.top_chore.title %></p>
+    <%#= current_user.top_chore.description %>
+
+  </div>
+
+
+<br>
+
 <p class="todo_list_title">Top 3 Categories among all users</p>
   <div class="index_row clearfix">
     <% if current_user.top_categories.any? %>
