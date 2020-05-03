@@ -4,9 +4,13 @@ class ChoresController < ApplicationController
 
 
   def index
-    #binding.pry
+
     @chores = current_user.chores.recent
+  #  bi#nding.pry
+    @top_chore = current_user.chores.most_tasks(self)
   end
+
+
 
 
   def new

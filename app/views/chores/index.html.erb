@@ -30,8 +30,8 @@
   <div class="index_row clearfix">
 
     <%# binding.pry %>
-    <p class="todo_list_subtitle"><%= current_user.top_chore.title %></p>
-    <%#= current_user.top_chore.description %>
+    <p class="todo_list_subtitle"><%= @top_chore.title %></p>
+    <%= @top_chore.description %>
 
   </div>
 

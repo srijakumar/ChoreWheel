@@ -10,6 +10,7 @@ class Chore < ApplicationRecord
 
 
   scope :most_tasks, -> (chore) {
+    #binding.pry
     joins(:tasks)
     .group("tasks.chore_id")
     .order("count(tasks.chore_id) desc").first

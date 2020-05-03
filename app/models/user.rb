@@ -20,9 +20,10 @@ class User < ApplicationRecord
   end
 
 
-  def top_chore
-   Chore.most_tasks(self)
-  end
+  # def top_chore
+  # #  binding.pry
+  #  Chore.most_tasks(self)
+  # end
 
 
 
